@@ -1,0 +1,7 @@
+{
+  "name": "football-prueba",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
