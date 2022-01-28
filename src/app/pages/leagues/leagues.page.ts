@@ -32,8 +32,6 @@ export class LeaguesPage implements OnInit {
   ngOnInit() {
     this.leagues = this.route.snapshot.data.leagues;
     this.teams = this.route.snapshot.data.teams;
-    console.log(this.leagues);
-    console.log(this.teams);
   }
 
   details(league: any): void {

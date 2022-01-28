@@ -1,0 +1,55 @@
+<nz-table
+  #virtualTable
+  [nzBordered]="true"
+  [nzData]="teams"
+  [nzVirtualForTrackBy]="trackByIndex"
+  [nzFrontPagination]="false"
+  [nzShowPagination]="false"
+  [nzScroll]="{ x: '100%', y: '400px' }"
+>
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Team's Name</th>
+      <th>League</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template nz-virtual-scroll let-data let-index="index">
+      <tr>
+        <td>
+          <nz-avatar
+            nzIcon="user"
+            [nzSrc]="data['Logo del Equipo']"
+          ></nz-avatar>
+        </td>
+        <td>{{data['Nombre del equipo']}}</td>
+        <td>{{data['Liga']}}</td>
+        <td>
+          <a nz-button nzType="link"
+            ><i nz-icon nzType="edit" nzTheme="outline"></i>Edit</a
+          >
+          <nz-divider nzType="vertical"></nz-divider>
+          <a nz-button nzType="text" nzDanger
+            ><i nz-icon nzType="delete" nzTheme="outline"></i>Delete</a
+          >
+        </td>
+      </tr>
+    </ng-template>
+  </tbody>
+  <!-- <tbody>
+    <tr *ngFor="let data of virtualTable.data">
+      <td>
+        <nz-avatar nzIcon="user" [nzSrc]="data['Logo del Equipo']"></nz-avatar>
+      </td>
+      <td>{{data['Nombre del equipo']}}</td>
+      <td>{{data['Liga']}}</td>
+      <td>
+        <a>Update</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>Delete</a>
+      </td>
+    </tr>
+  </tbody> -->
+</nz-table>
