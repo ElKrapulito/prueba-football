@@ -12,20 +12,10 @@
 
       <ul nz-list-item-actions>
         <nz-list-item-action
-          ><a (click)="edit(item)">edit</a></nz-list-item-action
-        >
-        <nz-list-item-action
-          ><a (click)="edit(item)">more</a></nz-list-item-action
+          ><a (click)="details(item)">Details</a></nz-list-item-action
         >
       </ul>
     </ng-container>
-    <nz-skeleton
-      *ngIf="item.loading"
-      [nzAvatar]="true"
-      [nzActive]="true"
-      [nzTitle]="false"
-      [nzLoading]="true"
-    ></nz-skeleton>
   </nz-list-item>
   <!-- <div class="loadmore" nz-list-load-more>
     <button nz-button *ngIf="!loadingMore" (click)="onLoadMore()">
@@ -33,3 +23,15 @@
     </button>
   </div> -->
 </nz-list>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="selectedLeagueName"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-container *nzModalContent>
+    <p *ngFor="let team of filteredLeagueTeams">
+      {{team['Nombre del equipo']}}
+    </p>
+  </ng-container>
+</nz-modal>

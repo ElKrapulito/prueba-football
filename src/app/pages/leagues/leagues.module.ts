@@ -8,6 +8,7 @@ import { LeaguesPageRoutingModule } from './leagues-routing.module';
 
 import { LeaguesPage } from './leagues.page';
 import { NgZorroAntdModule } from '../../shared/ng-zorro-antd/ng-zorro-antd.module';
+import { DetailModalComponent } from './components/detail-modal/detail-modal.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { NgZorroAntdModule } from '../../shared/ng-zorro-antd/ng-zorro-antd.modu
     LeaguesPageRoutingModule,
     NgZorroAntdModule,
   ],
-  declarations: [LeaguesPage],
+  declarations: [LeaguesPage, DetailModalComponent],
 })
 export class LeaguesPageModule {}
