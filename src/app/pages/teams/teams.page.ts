@@ -13,6 +13,11 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 export class TeamsPage implements OnInit {
   teams: any[];
   leagues: any[];
+  players: any[];
+  filterdPlayers: any[];
+  selectedTeamName: string;
+
+  isVisible = false;
 
   @ViewChild('virtualTable', { static: false })
   nzTableComponent?: NzTableComponent<any>;
@@ -27,6 +32,7 @@ export class TeamsPage implements OnInit {
   ngOnInit() {
     this.teams = this.route.snapshot.data.teams;
     this.leagues = this.route.snapshot.data.leagues;
+    this.players = this.route.snapshot.data.players;
 
     this.teams = this.teams.map((team, i) => {
       let leagueName = this.leagues.filter(
@@ -71,5 +77,19 @@ export class TeamsPage implements OnInit {
   ngOnDestroy(): void {
     // this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  showModal(team: any): void {
+    console.log(team);
+
+    this.filterdPlayers = this.players.filter(
+      (player) => player['teamId'] == team['id']
+    );
+    this.selectedTeamName = team['Nombre del equipo'];
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    this.isVisible = false;
   }
 }

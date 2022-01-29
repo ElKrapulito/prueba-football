@@ -1,14 +1,5 @@
 <nz-list>
   <nz-list-item *ngFor="let team of teams">
-    <span>
-      {{ team["Nombre del equipo"] }}
-    </span>
-    <ul nz-list-item-actions>
-      <nz-list-item-action
-        ><a (click)="destroyModal()" [routerLink]="['/teams', team['id']]"
-          >Details</a
-        ></nz-list-item-action
-      >
-    </ul>
+    <span> {{ team["Nombre del equipo"] }} </span>
   </nz-list-item>
 </nz-list>

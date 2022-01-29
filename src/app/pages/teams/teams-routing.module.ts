@@ -5,6 +5,7 @@ import { TeamsPage } from './teams.page';
 import { ListTeamsResolver } from '../../helpers/resolvers/list-teams.resolver';
 import { ListLeaguesResolver } from '../../helpers/resolvers/list-leagues.resolver';
 import { TeamResolver } from '../../helpers/resolvers/team.resolver';
+import { ListPlayersResolver } from '../../helpers/resolvers/list-players.resolver';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     resolve: {
       teams: ListTeamsResolver,
       leagues: ListLeaguesResolver,
+      players: ListPlayersResolver,
     },
     component: TeamsPage,
   },
