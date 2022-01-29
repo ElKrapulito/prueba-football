@@ -1,0 +1,41 @@
+<button class="mb-3" nz-button nzType="primary" routerLink="create">
+  Add player
+</button>
+<nz-table
+  #playersTable
+  [nzBordered]="true"
+  [nzData]="players"
+  [nzVirtualForTrackBy]="trackByIndex"
+  [nzScroll]="{ x: '350px', y: '400px' }"
+  nzShowSizeChanger
+  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+>
+  <thead>
+    <tr>
+      <th>Avatar</th>
+      <th>Player's Name</th>
+      <th>Team</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template nz-virtual-scroll let-data let-index="index">
+      <tr>
+        <td>
+          <nz-avatar nzIcon="user" [nzSrc]="data['Avatar']"></nz-avatar>
+        </td>
+        <td>{{data['Nombre del Jugador']}}</td>
+        <td>{{data['teamId']}}</td>
+        <td>
+          <a nz-button nzType="link" [routerLink]="['edit',data['id']]"
+            ><i nz-icon nzType="edit" nzTheme="outline"></i>Edit</a
+          >
+          <nz-divider nzType="vertical"></nz-divider>
+          <a nz-button nzType="text" nzDanger (click)="showDeleteConfirm(data)"
+            ><i nz-icon nzType="delete" nzTheme="outline"></i>Delete</a
+          >
+        </td>
+      </tr>
+    </ng-template>
+  </tbody>
+</nz-table>

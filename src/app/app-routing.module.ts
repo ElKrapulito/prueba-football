@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/teams/teams.module').then((m) => m.TeamsPageModule),
   },
+  {
+    path: 'players',
+    loadChildren: () => import('./pages/players/players.module').then( m => m.PlayersPageModule)
+  },
 ];
 
 @NgModule({
