@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { AvatarModalComponent } from './components/avatar-modal/avatar-modal.component';
+import { AvatarModalComponent } from '../../../shared/components/avatar-modal/avatar-modal.component';
 import { ActivatedRoute } from '@angular/router';
 import { RequestService } from '../../../services/request.service';
 import { Location } from '@angular/common';
