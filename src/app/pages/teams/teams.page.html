@@ -1,3 +1,6 @@
+<button class="mb-3" nz-button nzType="primary" routerLink="create">
+  Add team
+</button>
 <nz-table
   #virtualTable
   [nzBordered]="true"
@@ -5,7 +8,7 @@
   [nzVirtualForTrackBy]="trackByIndex"
   [nzFrontPagination]="false"
   [nzShowPagination]="false"
-  [nzScroll]="{ x: '100%', y: '400px' }"
+  [nzScroll]="{ x: '350px', y: '400px' }"
 >
   <thead>
     <tr>
@@ -27,29 +30,15 @@
         <td>{{data['Nombre del equipo']}}</td>
         <td>{{data['Liga']}}</td>
         <td>
-          <a nz-button nzType="link"
+          <a nz-button nzType="link" [routerLink]="['edit',data['id']]"
             ><i nz-icon nzType="edit" nzTheme="outline"></i>Edit</a
           >
           <nz-divider nzType="vertical"></nz-divider>
-          <a nz-button nzType="text" nzDanger
+          <a nz-button nzType="text" nzDanger (click)="showDeleteConfirm(data)"
             ><i nz-icon nzType="delete" nzTheme="outline"></i>Delete</a
           >
         </td>
       </tr>
     </ng-template>
   </tbody>
-  <!-- <tbody>
-    <tr *ngFor="let data of virtualTable.data">
-      <td>
-        <nz-avatar nzIcon="user" [nzSrc]="data['Logo del Equipo']"></nz-avatar>
-      </td>
-      <td>{{data['Nombre del equipo']}}</td>
-      <td>{{data['Liga']}}</td>
-      <td>
-        <a>Update</a>
-        <nz-divider nzType="vertical"></nz-divider>
-        <a>Delete</a>
-      </td>
-    </tr>
-  </tbody> -->
 </nz-table>

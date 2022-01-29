@@ -9,7 +9,7 @@ import { RequestService } from '../../services/request.service';
 import { map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class LeaguesResolver implements Resolve<any> {
+export class ListLeaguesResolver implements Resolve<any> {
   constructor(private req: RequestService) {}
 
   resolve(

@@ -1,0 +1,62 @@
+<h2 nz-typography>{{ team? 'Update team' : 'Create team' }}</h2>
+
+<form nz-form [formGroup]="teamForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="teamName" nzRequired>
+      <span>Team Name</span>
+    </nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input your team name!"
+    >
+      <input nz-input id="teamName" formControlName="teamName" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="league" nzRequired
+      >League</nz-form-label
+    >
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input your league!"
+    >
+      <nz-select formControlName="league">
+        <nz-option
+          *ngFor="let league of leagues"
+          [nzLabel]="league['Nombre De La Liga']"
+          [nzValue]="league['Identificador']"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control
+      class="mx-auto"
+      [nzSm]="14"
+      [nzXs]="24"
+      [nzValidateStatus]="teamForm.controls['avatarUrl']"
+      nzErrorTip="Please select an avatar!"
+    >
+      <nz-avatar
+        (click)="createComponentModal()"
+        [nzSize]="128"
+        nzIcon="user"
+        [nzSrc]="avatarUrl.value"
+      ></nz-avatar>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row>
+    <div class="mx-auto">
+      <button nz-button nzType="primary" type="submit">
+        {{team? 'Update' : 'Create'}}
+      </button>
+      <button class="ms-3" nz-button type="button" (click)="goBack()">
+        Back
+      </button>
+    </div>
+  </nz-form-item>
+</form>

@@ -1,0 +1,11 @@
+<nz-list nzGrid>
+  <div nz-row [nzGutter]="16">
+    <div nz-col [nzSm]="6" [nzXs]="12" *ngFor="let item of data">
+      <nz-list-item>
+        <nz-card (click)="avatarSelect(item)"
+          ><img alt="example" [src]="item"
+        /></nz-card>
+      </nz-list-item>
+    </div>
+  </div>
+</nz-list>
