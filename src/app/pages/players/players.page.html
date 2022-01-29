@@ -5,7 +5,7 @@
 <nz-table
   #playersTable
   [nzBordered]="true"
-  [nzData]="players"
+  [nzData]="playersDisplay"
   [nzVirtualForTrackBy]="trackByIndex"
   [nzScroll]="{ x: '350px', y: '400px' }"
   nzShowSizeChanger
@@ -14,8 +14,25 @@
   <thead>
     <tr>
       <th>Avatar</th>
-      <th>Player's Name</th>
-      <th>Team</th>
+      <th nzCustomFilter>
+        Player's Name
+        <nz-filter-trigger
+          [(nzVisible)]="visiblePlayer"
+          [nzActive]="searchValuePlayer.length > 0"
+          [nzDropdownMenu]="menuPlayer"
+        >
+          <i nz-icon nzType="search"></i>
+        </nz-filter-trigger>
+      </th>
+      <th nzCustomFilter>
+        Team<nz-filter-trigger
+          [(nzVisible)]="visibleTeam"
+          [nzActive]="searchValueTeam.length > 0"
+          [nzDropdownMenu]="menuTeam"
+        >
+          <i nz-icon nzType="search"></i>
+        </nz-filter-trigger>
+      </th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -40,3 +57,49 @@
     </ng-template>
   </tbody>
 </nz-table>
+
+<nz-dropdown-menu #menuPlayer="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input
+        type="text"
+        nz-input
+        placeholder="Search name"
+        [(ngModel)]="searchValuePlayer"
+      />
+      <button
+        nz-button
+        nzSize="small"
+        nzType="primary"
+        (click)="searchPlayer()"
+        class="search-button"
+      >
+        Search
+      </button>
+      <button nz-button nzSize="small" (click)="resetPlayer()">Reset</button>
+    </div>
+  </div>
+</nz-dropdown-menu>
+
+<nz-dropdown-menu #menuTeam="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input
+        type="text"
+        nz-input
+        placeholder="Search name"
+        [(ngModel)]="searchValueTeam"
+      />
+      <button
+        nz-button
+        nzSize="small"
+        nzType="primary"
+        (click)="searchTeam()"
+        class="search-button"
+      >
+        Search
+      </button>
+      <button nz-button nzSize="small" (click)="resetTeam()">Reset</button>
+    </div>
+  </div>
+</nz-dropdown-menu>

@@ -16,8 +16,15 @@ export class PlayersPage implements OnInit {
   private destroy$ = new Subject();
 
   players: any[];
+  playersDisplay: any[];
   teams: any[];
   listOfCurrentPageData: readonly any[] = [];
+
+  searchValuePlayer = '';
+  visiblePlayer = false;
+
+  searchValueTeam = '';
+  visibleTeam = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +42,8 @@ export class PlayersPage implements OnInit {
       )[0]['Nombre del equipo'];
       return (player = { ...player, index: i, teamId: teamName });
     });
+
+    this.playersDisplay = [...this.players];
   }
 
   trackByIndex(_: number, team: any): number {
@@ -79,5 +88,53 @@ export class PlayersPage implements OnInit {
   ngOnDestroy(): void {
     // this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  resetPlayer(): void {
+    this.searchValuePlayer = '';
+    this.searchPlayer();
+  }
+
+  searchPlayer(): void {
+    this.visiblePlayer = false;
+    if (this.searchValueTeam == '') {
+      this.playersDisplay = this.players.filter(
+        (item: any) =>
+          item['Nombre del Jugador']
+            .toLowerCase()
+            .indexOf(this.searchValuePlayer.toLowerCase()) !== -1
+      );
+    } else {
+      this.playersDisplay = this.playersDisplay.filter(
+        (item: any) =>
+          item['Nombre del Jugador']
+            .toLowerCase()
+            .indexOf(this.searchValuePlayer.toLowerCase()) !== -1
+      );
+    }
+  }
+
+  resetTeam(): void {
+    this.searchValueTeam = '';
+    this.searchTeam();
+  }
+
+  searchTeam(): void {
+    this.visibleTeam = false;
+    if (this.searchValuePlayer == '') {
+      this.playersDisplay = this.players.filter(
+        (item: any) =>
+          item['teamId']
+            .toLowerCase()
+            .indexOf(this.searchValueTeam.toLowerCase()) !== -1
+      );
+    } else {
+      this.playersDisplay = this.playersDisplay.filter(
+        (item: any) =>
+          item['teamId']
+            .toLowerCase()
+            .indexOf(this.searchValueTeam.toLowerCase()) !== -1
+      );
+    }
   }
 }
