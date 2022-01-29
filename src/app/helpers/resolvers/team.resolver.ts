@@ -9,14 +9,15 @@ import { RequestService } from '../../services/request.service';
 import { map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class ListTeamsResolver implements Resolve<any> {
+export class TeamResolver implements Resolve<any> {
   constructor(private req: RequestService) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
-    return this.req.get('teams').pipe(
+    const id = route.paramMap.get('id');
+    return this.req.getById('teams', id).pipe(
       map((res: any) => {
         return res;
       })

@@ -12,7 +12,7 @@ export class RequestService {
     return this.http.get(`${environment.MAIN_URL}/${url}`);
   }
 
-  getById(url: string, id: number) {
+  getById(url: string, id: string) {
     return this.http.get(`${environment.MAIN_URL}/${url}/${id}/`);
   }
 
@@ -20,11 +20,11 @@ export class RequestService {
     return this.http.post(`${environment.MAIN_URL}/${url}/`, obj);
   }
 
-  update(url: string, id: number, obj: any) {
+  update(url: string, id: string, obj: any) {
     return this.http.put(`${environment.MAIN_URL}/${url}/${id}/`, obj);
   }
 
-  delete(url: string, id: number) {
+  delete(url: string, id: string) {
     return this.http.delete(`${environment.MAIN_URL}/${url}/${id}/`);
   }
 }
