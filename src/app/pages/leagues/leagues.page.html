@@ -1,3 +1,4 @@
+<h2>Leagues</h2>
 <nz-list class="demo-loadmore-list">
   <nz-list-item *ngFor="let item of leagues">
     <ng-container>
@@ -5,23 +6,18 @@
         [nzAvatar]="item['Logo de la Liga']"
         [nzDescription]="item['Nombre De La Liga']"
       >
-        <!-- <nz-list-item-meta-title>
-          <a href="https://ng.ant.design">{{ item['Identificador'] }}</a>
-        </nz-list-item-meta-title> -->
       </nz-list-item-meta>
 
       <ul nz-list-item-actions>
         <nz-list-item-action
-          ><a (click)="details(item)">Details</a></nz-list-item-action
+          ><a (click)="details(item)"
+            ><i nz-icon nzType="unordered-list" nzTheme="outline"></i>
+            Details</a
+          ></nz-list-item-action
         >
       </ul>
     </ng-container>
   </nz-list-item>
-  <!-- <div class="loadmore" nz-list-load-more>
-    <button nz-button *ngIf="!loadingMore" (click)="onLoadMore()">
-      loading more
-    </button>
-  </div> -->
 </nz-list>
 
 <nz-modal

@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { RequestService } from '../../services/request.service';
 import { ActivatedRoute } from '@angular/router';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { DetailModalComponent } from './components/detail-modal/detail-modal.component';
 
@@ -23,7 +21,6 @@ export class LeaguesPage implements OnInit {
   list: Array<{ loading: boolean; name: any }> = [];
 
   constructor(
-    private req: RequestService,
     private route: ActivatedRoute,
     private modal: NzModalService,
     private viewContainerRef: ViewContainerRef
@@ -38,12 +35,8 @@ export class LeaguesPage implements OnInit {
     this.filteredLeagueTeams = this.teams.filter(
       (item) => item['Liga'] == league['Identificador']
     );
-    this.selectedLeagueName = `League ${league['Nombre De La Liga']}`;
+    this.selectedLeagueName = `Teams in the league of  ${league['Nombre De La Liga']}`;
     this.createComponentModal();
-    // console.log(league);
-
-    // console.log(this.filteredLeagueTeams);
-    // this.isVisible = true;
   }
 
   createComponentModal(): void {
